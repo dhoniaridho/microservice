@@ -7,13 +7,14 @@ import { SignUpDto } from '../dtos';
 import { ENV } from 'src/config/env';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
+import { NOTIFICATION_SERVICE } from 'src/services/services.constant';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UsersService,
     private readonly jwtService: JwtService,
-    @Inject(ENV.MS.NOTIFICATION)
+    @Inject(NOTIFICATION_SERVICE)
     private readonly notificationService: ClientProxy,
   ) {}
 
